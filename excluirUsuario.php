@@ -17,9 +17,13 @@
     $obUser = Usuarios::getUsuario($_GET["id"]);
 
     if(isset($_POST['excluir'])){
-        $obUser->excluirUsuario();
+         $obUser->excluirUsuario();
+        if($_GET['id'] == $_SESSION['Usuario']['Cod_Funcionario']){
+            header('location:logout.php');
+        }
+        else{
         header('location:listarUsuarios.php?status=success');
-        exit;
+        }
     }
 
     include __DIR__.'/include/header.php';
