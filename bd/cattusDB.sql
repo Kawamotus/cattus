@@ -37,15 +37,15 @@ CREATE TABLE IF NOT EXISTS Atividade (
     Termino_Atividade DATETIME NOT NULL,
     ID_Animal INTEGER(8) NOT NULL,
     ID_Camera INTEGER(8) NOT NULL,
-    CONSTRAINT fk_Atividade_Camera FOREIGN KEY (ID_Camera) REFERENCES Camera(ID_Camera) ON DELETE RESTRICT,
-    CONSTRAINT fk_Atividade_Animal FOREIGN KEY (ID_Animal) REFERENCES Animal(ID_Animal) ON DELETE RESTRICT
+	FOREIGN KEY (ID_Camera) REFERENCES Camera(ID_Camera) ON DELETE CASCADE,
+    FOREIGN KEY (ID_Animal) REFERENCES Animal(ID_Animal) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Alerta (
     ID_Alerta INT(8) PRIMARY KEY auto_increment,
     DataHora_Alerta DATETIME NOT NULL,
     ID_Atividade INTEGER(8) NOT NULL,
-    CONSTRAINT fk_Alerta_Atividade FOREIGN KEY (ID_Atividade) REFERENCES Atividade(ID_Atividade) ON DELETE RESTRICT
+	FOREIGN KEY (ID_Atividade) REFERENCES Atividade(ID_Atividade) ON DELETE CASCADE
 );
 
 INSERT INTO Camera (Localizacao_Camera) VALUES
@@ -103,4 +103,3 @@ INSERT INTO Alerta(DataHora_Alerta, ID_Atividade) VALUES
 	('2023-12-17 10:15:00', 4),
 	('2023-12-20 16:30:00', 6),
 	('2023-12-28 18:45:00', 2);
-    
