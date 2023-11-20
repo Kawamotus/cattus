@@ -6,7 +6,7 @@
     use App\Entity\Usuarios;
     use App\Session\Login;
 
-    //Login::requireLogin();
+    Login::requireLogin();
 
     /*if($_SESSION['Usuario']['Nivel_Funcionario'] != 2){
         header('location:acessoNegado.php');
@@ -49,7 +49,9 @@
 
                     $obUsuario->cadastrarFuncionario();
 
-                    Login::login($obUsuario);
+                    //Login::login($obUsuario);
+
+                    header('location:listarUsuarios.php');
 
                     //echo "<pre>"; print_r($obUpload->getExtension()); echo "</pre>";exit;
                     
